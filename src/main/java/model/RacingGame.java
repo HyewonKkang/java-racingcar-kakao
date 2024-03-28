@@ -2,7 +2,6 @@ package model;
 
 import util.RandomNumberGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +18,8 @@ public class RacingGame {
     }
 
     public List<String> generateRacingMessage() {
-        return cars.stream().map(Car::generateMessage)
+        return cars.stream()
+                .map(Car::generateMessage)
                 .collect(Collectors.toList());
     }
 
@@ -32,18 +32,14 @@ public class RacingGame {
                 .map(Car::getPosition)
                 .reduce(0, Integer::max);
 
-        List<Car> winners = new ArrayList<>();
-        cars.stream()
+        return cars.stream()
                 .filter(car -> car.isAtPosition(maxPosition))
-                .forEach(winners::add);
-
-        return winners;
+                .collect(Collectors.toList());
     }
 
-    public int validateTryNumber(int tryNumber) {
+    public void validateTryNumber(int tryNumber) {
         if (tryNumber < 1) {
             throw new IllegalArgumentException("시도 횟수는 1 이상이어야 합니다.");
         }
-        return tryNumber;
     }
 }
