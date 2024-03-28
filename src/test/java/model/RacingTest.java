@@ -2,11 +2,12 @@ package model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import util.RandomNumberGenerator;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RacingTest {
     @Test
@@ -14,8 +15,19 @@ public class RacingTest {
     void validateTryNumberTest() {
         int tryNumber = 0;
 
-        assertThrows(IllegalArgumentException.class,
-                () -> new RacingGame(Arrays.asList(new Car("first")), tryNumber));
+        assertThatThrownBy(() -> new RacingGame(Arrays.asList(new Car("first")), tryNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("레이싱 게임의 우승자가 존재한다.")
+    void winnerExistsTest() {
+        RacingGame racingGame = new RacingGame(Arrays.asList(new Car("first")));
+        NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+
+        racingGame.moveCars(randomNumberGenerator);
+
+        assertThat(racingGame.getWinners()).isNotEmpty();
     }
 
     @Test

@@ -1,7 +1,5 @@
 package model;
 
-import util.RandomNumberGenerator;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,8 +21,8 @@ public class RacingGame {
                 .collect(Collectors.toList());
     }
 
-    public void moveCars() {
-        cars.forEach(car -> car.run(RandomNumberGenerator.generate()));
+    public void moveCars(NumberGenerator randomNumberGenerator) {
+        cars.forEach(car -> car.run(randomNumberGenerator.generate()));
     }
 
     public List<Car> getWinners() {

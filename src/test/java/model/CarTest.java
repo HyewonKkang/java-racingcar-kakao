@@ -3,6 +3,7 @@ package model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
@@ -19,7 +20,7 @@ public class CarTest {
     void forwardTest() {
         Car car = new Car("helen");
         car.run(4);
-        assertTrue(car.getPosition() > 0);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @Test
@@ -27,6 +28,6 @@ public class CarTest {
     void stopTest() {
         Car car = new Car("eve");
         car.run(3);
-        assertEquals(0, car.getPosition());
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
