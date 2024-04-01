@@ -32,7 +32,7 @@ public class RacingController {
         RacingGame racingGame = new RacingGame(createCars(), tryNumber);
 
         view.printResultMessage();
-        for (int i = 0; i < tryNumber; i++) {
+        while (!racingGame.isGameOver()) {
             racingGame.moveCars(randomNumberGenerator);
             view.printCarResult(racingGame.generateRacingMessage());
         }

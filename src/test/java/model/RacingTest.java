@@ -22,7 +22,7 @@ public class RacingTest {
     @Test
     @DisplayName("레이싱 게임의 우승자가 존재한다.")
     void winnerExistsTest() {
-        RacingGame racingGame = new RacingGame(Arrays.asList(new Car("first")));
+        RacingGame racingGame = new RacingGame(Arrays.asList(new Car("first")), 1);
         NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
 
         racingGame.moveCars(randomNumberGenerator);
@@ -47,7 +47,7 @@ public class RacingTest {
         second.run(4);
         third.run(3);
 
-        RacingGame result = new RacingGame(Arrays.asList(first, second, third));
+        RacingGame result = new RacingGame(Arrays.asList(first, second, third), 2);
         assertThat(result.getWinners()).containsExactly(first);
     }
 
@@ -68,7 +68,7 @@ public class RacingTest {
         second.run(4);
         third.run(3);
 
-        RacingGame result = new RacingGame(Arrays.asList(first, second, third));
+        RacingGame result = new RacingGame(Arrays.asList(first, second, third), 2);
         assertThat(result.getWinners()).containsExactlyInAnyOrder(first, second);
     }
 }
