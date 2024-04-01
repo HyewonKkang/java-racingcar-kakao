@@ -34,7 +34,7 @@ public class RacingController {
         view.printResultMessage();
         while (!racingGame.isGameOver()) {
             racingGame.moveCars(randomNumberGenerator);
-            view.printCarResult(racingGame.generateRacingMessage());
+            view.printCarsResult(racingGame.getCars());
         }
 
         view.printWinnerMessage(racingGame);

@@ -15,12 +15,6 @@ public class RacingGame {
         this.tryNumber = tryNumber;
     }
 
-    public List<String> generateRacingMessage() {
-        return cars.stream()
-                .map(Car::generateMessage)
-                .collect(Collectors.toList());
-    }
-
     public void moveCars(NumberGenerator randomNumberGenerator) {
         cars.forEach(car -> car.run(randomNumberGenerator.generate()));
     }
@@ -43,5 +37,9 @@ public class RacingGame {
 
     public boolean isGameOver() {
         return currentRound >= tryNumber;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }

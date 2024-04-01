@@ -24,8 +24,12 @@ public class View {
         System.out.println("실행 결과");
     }
 
-    public void printCarResult(List<String> carMessages) {
-        carMessages.forEach(System.out::println);
+    private void printCarResult(Car car) {
+        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+    }
+
+    public void printCarsResult(List<Car> cars) {
+        cars.forEach(this::printCarResult);
         System.out.println();
     }
 

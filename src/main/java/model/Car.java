@@ -7,6 +7,7 @@ public class Car {
     private final String name;
 
     private static final int MOVE_THRESHOLD = 4;
+    private static final int MAX_CAR_NAME_LENGTH = 5;
 
     public Car(String name) {
         validateCarName(name);
@@ -20,13 +21,9 @@ public class Car {
     }
 
     private void validateCarName(String carName) {
-        if (carName.length() > 5) {
+        if (carName.length() > MAX_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
         }
-    }
-
-    public String generateMessage() {
-        return name + " : " + "-".repeat(position);
     }
 
     public String getName() {
