@@ -17,6 +17,7 @@ public class RacingGame {
 
     public void moveCars(NumberGenerator randomNumberGenerator) {
         cars.forEach(car -> car.run(randomNumberGenerator.generate()));
+        currentRound++;
     }
 
     public List<Car> getWinners() {
