@@ -28,8 +28,9 @@ public class RacingController {
     }
 
     private void play() {
+        List<Car> cars = createCars();
         int tryNumber = view.getTryNumberInput();
-        RacingGame racingGame = new RacingGame(createCars(), tryNumber);
+        RacingGame racingGame = new RacingGame(cars, tryNumber);
 
         view.printResultMessage();
         while (!racingGame.isGameOver()) {
